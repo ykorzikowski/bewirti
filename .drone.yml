@@ -37,6 +37,7 @@ steps:
       event:
         exclude:
           - tag
+          - pull_request
 
   - name: buildah-build-prod-tag
     image: harbor.swokiz.dev/proxy.quay.io/buildah/stable:v1.39
