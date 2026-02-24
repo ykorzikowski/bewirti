@@ -61,8 +61,15 @@ steps:
           - tag
 
   - name: deployment.
-    depends_on: [kaninko-build-prod]
+    depends_on: [buildah-build-prod-branch]
     image: harbor.swokiz.dev/hub-proxy/plugins/downstream
+    when:
+      branch:
+        include:
+          - main
+      event:
+        include:
+          - push
     settings:
       server: https://drone.swokiz.dev
       token:
