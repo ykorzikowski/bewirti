@@ -8,7 +8,13 @@ COPY --chown=1000:1000 res /app/res
 
 WORKDIR /app
 
-RUN python3 -m pip install -r requirements.txt
+WORKDIR /app
+ENV PYTHONPATH=/app
+ENV STREAMLIT_CONFIG_DIR=/app/.streamlit
+
+RUN useradd -m -u 1000 app \
+ && chown -R 1000:1000 /app \
+ && python3 -m pip install -r /app/requirements.txt
 
 ENTRYPOINT ["python3", "-m", "streamlit", "run", "--server.address", "0.0.0.0", "app.py"]
 
