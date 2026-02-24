@@ -1,6 +1,10 @@
 FROM harbor.swokiz.dev/hub-proxy/library/python:3.12-slim
 
-COPY --chown=1000:1000 .streamlit/ res/ requirements.txt app.py receipt_service.py /app
+COPY --chown=1000:1000 requirements.txt /app/requirements.txt
+COPY --chown=1000:1000 app.py /app/app.py
+COPY --chown=1000:1000 receipt_service.py /app/receipt_service.py
+COPY --chown=1000:1000 .streamlit /app/.streamlit
+COPY --chown=1000:1000 res /app/res
 
 WORKDIR /app
 
