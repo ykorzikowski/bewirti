@@ -17,7 +17,7 @@ steps:
       - test -f coverage.xml
 
   - name: buildah-build-prod-branch
-    image: harbor.swokiz.dev/proxy.quay.io/buildah/stable:v1.39
+    image: harbor.swokiz.dev/proxy.quay.io/buildah/stable:v1.42
     privileged: true
     depends_on: [quality-gates]
     environment:
@@ -40,7 +40,7 @@ steps:
           - pull_request
 
   - name: buildah-build-prod-tag
-    image: harbor.swokiz.dev/proxy.quay.io/buildah/stable:v1.39
+    image: harbor.swokiz.dev/proxy.quay.io/buildah/stable:v1.42
     privileged: true
     depends_on: [quality-gates]
     environment:
