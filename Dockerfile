@@ -9,8 +9,6 @@ COPY --chown=1000:1000 res /app/res
 WORKDIR /app
 
 WORKDIR /app
-ENV PYTHONPATH=/app
-ENV STREAMLIT_CONFIG_DIR=/app/.streamlit
 
 RUN useradd -m -u 1000 app \
  && chown -R 1000:1000 /app \
