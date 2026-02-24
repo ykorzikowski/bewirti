@@ -20,3 +20,31 @@ Die gehostete Version findet sich hier: https://bewirti.swokiz.com/
 python3 -m venv venv  
 source venv/bin/activate  
 python3 -m pip install -r requirements.txt
+
+## Development checks
+
+Install dev dependencies first:
+
+python3 -m pip install -r requirements-dev.txt
+
+Run lint:
+
+ruff check .
+
+Run type checks:
+
+mypy app.py receipt_service.py
+
+Run unit tests:
+
+pytest -m "not e2e"
+
+Run e2e tests:
+
+pytest -m e2e
+
+Run coverage report (XML for CI/SonarQube):
+
+pytest -m "not e2e" --cov=. --cov-report=xml --cov-report=term
+
+Detailed testing notes: `docs/testing.md`
